@@ -97,12 +97,9 @@
 		1ACFF5381F17E84700ED481F /* Project 1 */ = {
 			isa = PBXGroup;
 			children = (
-				1ACFF5391F17E84700ED481F /* AppDelegate.swift */,
+				1ACFF5671F17ED8800ED481F /* Supporting Files */,
 				1ACFF53B1F17E84700ED481F /* ViewController.swift */,
 				1ACFF53D1F17E84700ED481F /* Main.storyboard */,
-				1ACFF5401F17E84700ED481F /* Assets.xcassets */,
-				1ACFF5421F17E84700ED481F /* LaunchScreen.storyboard */,
-				1ACFF5451F17E84700ED481F /* Info.plist */,
 			);
 			path = "Project 1";
 			sourceTree = "<group>";
@@ -123,6 +120,17 @@
 				1ACFF55B1F17E84700ED481F /* Info.plist */,
 			);
 			path = "Project 1UITests";
+			sourceTree = "<group>";
+		};
+		1ACFF5671F17ED8800ED481F /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				1ACFF5391F17E84700ED481F /* AppDelegate.swift */,
+				1ACFF5401F17E84700ED481F /* Assets.xcassets */,
+				1ACFF5421F17E84700ED481F /* LaunchScreen.storyboard */,
+				1ACFF5451F17E84700ED481F /* Info.plist */,
+			);
+			name = "Supporting Files";
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -414,6 +422,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				DEVELOPMENT_TEAM = "";
 				INFOPLIST_FILE = "Project 1/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "com.olearyj.test.Project-1";
@@ -426,6 +435,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				DEVELOPMENT_TEAM = "";
 				INFOPLIST_FILE = "Project 1/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "com.olearyj.test.Project-1";
@@ -507,6 +517,7 @@
 				1ACFF5601F17E84700ED481F /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		1ACFF5611F17E84700ED481F /* Build configuration list for PBXNativeTarget "Project 1Tests" */ = {
 			isa = XCConfigurationList;
@@ -515,6 +526,7 @@
 				1ACFF5631F17E84700ED481F /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		1ACFF5641F17E84700ED481F /* Build configuration list for PBXNativeTarget "Project 1UITests" */ = {
 			isa = XCConfigurationList;
@@ -523,6 +535,7 @@
 				1ACFF5661F17E84700ED481F /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
