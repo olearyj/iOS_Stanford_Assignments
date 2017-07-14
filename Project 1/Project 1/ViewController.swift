@@ -12,7 +12,9 @@ class ViewController: UIViewController {
 
     @IBOutlet weak var calcDisplay: UILabel!
     
-    private var isUserTypingNumber = false;
+    private var brain: CalculatorBrain = CalculatorBrain()
+    
+    private var isUserTypingNumber = false
     
     private var currentValue: Double {
         get{
@@ -53,14 +55,11 @@ class ViewController: UIViewController {
         
         isUserTypingNumber = false
         
-        switch sender.currentTitle! {
-        case "cos":
-            currentValue = cos(currentValue)
-        case "π":
-            currentValue = Double.pi
-        default:
-            break
-        }
+        brain.accumulator = currentValue
+        
+        brain.performOperation(sender.currentTitle!)
+        
+        currentValue = brain.accumulator
         
     }
     
