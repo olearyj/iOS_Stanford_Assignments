@@ -12,6 +12,17 @@ class ViewController: UIViewController {
 
     @IBOutlet weak var calcDisplay: UILabel!
     
+    private var isUserTypingNumber = false;
+    
+    private var currentValue: Double {
+        get{
+            return Double(calcDisplay.text!)!
+        }
+        set{
+            calcDisplay.text = String(newValue)
+        }
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
@@ -25,6 +36,14 @@ class ViewController: UIViewController {
     @IBAction func touchDigit(_ sender: UIButton) {
         
         print("Digit pressed: \(sender.currentTitle!)")
+        
+        if !isUserTypingNumber {
+            isUserTypingNumber = true
+            calcDisplay.text = sender.currentTitle!
+        }
+        else {
+            calcDisplay.text! += sender.currentTitle!
+        }
         
     }
 
