@@ -51,6 +51,17 @@ class ViewController: UIViewController {
     
         print("Operation pressed: \(sender.currentTitle!)")
         
+        isUserTypingNumber = false
+        
+        switch sender.currentTitle! {
+        case "cos":
+            currentValue = cos(currentValue)
+        case "π":
+            currentValue = Double.pi
+        default:
+            break
+        }
+        
     }
     
 }
