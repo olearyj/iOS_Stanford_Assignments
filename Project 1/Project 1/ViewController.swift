@@ -20,6 +20,11 @@ class ViewController: UIViewController {
         // Dispose of any resources that can be recreated.
     }
 
+    @IBAction func touchDigit(_ sender: UIButton) {
+        
+        print("Digit pressed: \(sender.currentTitle!)")
+        
+    }
 
 }
 
