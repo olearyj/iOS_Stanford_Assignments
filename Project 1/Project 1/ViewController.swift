@@ -26,5 +26,11 @@ class ViewController: UIViewController {
         
     }
 
+    @IBAction func performOperation(_ sender: UIButton) {
+    
+        print("Operation pressed: \(sender.currentTitle!)")
+        
+    }
+    
 }
 
