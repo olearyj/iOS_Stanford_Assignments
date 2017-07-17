@@ -10,21 +10,24 @@ import Foundation
 
 struct CalculatorBrain {
     
-    var accumulator: Double!
+    private var accumulator: Double!
     
-    enum Operation {
+    private enum Operation {
         case Constant(Double)
         case UnaryOperation((Double) -> Double)
         case BinaryOperation((Double, Double) -> Double)
         case Equal
     }
     
-    var operations: Dictionary<String, Operation> = [
+    private var operations: Dictionary<String, Operation> = [
         "π": Operation.Constant(Double.pi),
         "cos": Operation.UnaryOperation(cos),
         "±": Operation.UnaryOperation({(a) in -a}),
         "√": Operation.UnaryOperation(sqrt),
-        "+": Operation.BinaryOperation({$0 + $1})
+        "+": Operation.BinaryOperation({$0 + $1}),
+        "-": Operation.BinaryOperation({$0 - $1}),
+        "×": Operation.BinaryOperation({$0 * $1}),
+        "÷": Operation.BinaryOperation({$0 / $1})
     ]
     
     mutating func performOperation(_ symbol: String){
@@ -34,7 +37,7 @@ struct CalculatorBrain {
             case Operation.Constant(let value):
                 accumulator = value
             case Operation.UnaryOperation(let function):
-                if accumulator != nil{
+                if accumulator != nil {
                     accumulator = function(accumulator)
                 }
             default:
@@ -42,6 +45,16 @@ struct CalculatorBrain {
             }
         }
         
+    }
+    
+    mutating func setOperand(_ operand: Double){
+        accumulator = operand
+    }
+    
+    var result: Double? {
+        get {
+            return accumulator
+        }
     }
     
 }

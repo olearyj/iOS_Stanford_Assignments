@@ -55,11 +55,11 @@ class ViewController: UIViewController {
         
         isUserTypingNumber = false
         
-        brain.accumulator = currentValue
+        brain.setOperand(currentValue)
         
         brain.performOperation(sender.currentTitle!)
         
-        currentValue = brain.accumulator
+        currentValue = brain.result!
         
     }
     
