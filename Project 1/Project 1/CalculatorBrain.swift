@@ -27,7 +27,8 @@ struct CalculatorBrain {
         "+": Operation.BinaryOperation({$0 + $1}),
         "-": Operation.BinaryOperation({$0 - $1}),
         "×": Operation.BinaryOperation({$0 * $1}),
-        "÷": Operation.BinaryOperation({$0 / $1})
+        "÷": Operation.BinaryOperation({$0 / $1}),
+        "=": Operation.Equal
     ]
     
     mutating func performOperation(_ symbol: String){
@@ -40,8 +41,15 @@ struct CalculatorBrain {
                 if accumulator != nil {
                     accumulator = function(accumulator)
                 }
-            default:
-                break
+            case Operation.BinaryOperation(let function):
+                if accumulator != nil {
+                    pbo = PendingBinaryOperation(firstOperand: accumulator, operation: function)
+                }
+            case Operation.Equal:
+                if accumulator != nil && pbo != nil {
+                    accumulator = pbo!.performOperation(accumulator)
+                }
+                pbo = nil
             }
         }
         
@@ -49,6 +57,17 @@ struct CalculatorBrain {
     
     mutating func setOperand(_ operand: Double){
         accumulator = operand
+    }
+    
+    private var pbo: PendingBinaryOperation?
+    
+    private struct PendingBinaryOperation {
+        var firstOperand: Double
+        var operation: (Double, Double) -> Double
+        
+        func performOperation(_ secondOperand: Double) -> Double {
+            return operation(firstOperand, secondOperand)
+        }
     }
     
     var result: Double? {
