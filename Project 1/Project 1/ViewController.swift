@@ -36,12 +36,17 @@ class ViewController: UIViewController {
     }
 
     @IBAction func touchDigit(_ sender: UIButton) {
-        
         print("Digit pressed: \(sender.currentTitle!)")
+        
+        let userPressedDecimalButton = sender.currentTitle == "."
+        let calcDisplayContainsDecimal = (calcDisplay.text?.contains("."))!
         
         if !isUserTypingNumber {
             isUserTypingNumber = true
             calcDisplay.text = sender.currentTitle!
+        }
+        else if userPressedDecimalButton && calcDisplayContainsDecimal {
+            return
         }
         else {
             calcDisplay.text! += sender.currentTitle!
