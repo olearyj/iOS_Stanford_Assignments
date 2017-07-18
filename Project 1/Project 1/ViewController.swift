@@ -52,14 +52,18 @@ class ViewController: UIViewController {
     @IBAction func performOperation(_ sender: UIButton) {
     
         print("Operation pressed: \(sender.currentTitle!)")
+        if isUserTypingNumber {
+            brain.setOperand(currentValue)
+            isUserTypingNumber = false
+        }
         
-        isUserTypingNumber = false
+        if let mathematicalSymbol = sender.currentTitle {
+            brain.performOperation(mathematicalSymbol)
+        }
         
-        brain.setOperand(currentValue)
-        
-        brain.performOperation(sender.currentTitle!)
-        
-        currentValue = brain.result!
+        if let result = brain.result {
+            currentValue = result
+        }
         
     }
     

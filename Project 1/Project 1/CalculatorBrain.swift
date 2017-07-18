@@ -8,7 +8,7 @@
 
 import Foundation
 
-struct CalculatorBrain {
+internal struct CalculatorBrain {
     
     private var accumulator: Double!
     
@@ -44,12 +44,14 @@ struct CalculatorBrain {
             case Operation.BinaryOperation(let function):
                 if accumulator != nil {
                     pbo = PendingBinaryOperation(firstOperand: accumulator, operation: function)
+                    accumulator = nil
                 }
             case Operation.Equal:
+                // Perform pending binary operation
                 if accumulator != nil && pbo != nil {
-                    accumulator = pbo!.performOperation(accumulator)
+                    accumulator = pbo!.perform(with: accumulator)
+                    pbo = nil
                 }
-                pbo = nil
             }
         }
         
@@ -65,7 +67,7 @@ struct CalculatorBrain {
         var firstOperand: Double
         var operation: (Double, Double) -> Double
         
-        func performOperation(_ secondOperand: Double) -> Double {
+        func perform(with secondOperand: Double) -> Double {
             return operation(firstOperand, secondOperand)
         }
     }
